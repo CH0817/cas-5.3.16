@@ -1,8 +1,9 @@
 {
   "@class": "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
-  "clientId": "100001",
-  "clientSecret": "100001abcdeft",
+  "clientId": "spring-boot-template",
+  "clientSecret": "1",
   "serviceId": "^(https|http|imaps)://.*",
-  "name": "OAuthService",
-  "id": 100
+  "name": "spring-boot-template",
+  "id": 100,
+  "jsonFormat": true
 }
