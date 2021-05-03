@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "2e480236-4e63-45f6-9fac-35d61bc70ef0",
+		"name": "CAS OAuth2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "取 code (需使用 browser)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/oauth2.0/authorize?response_type=code&client_id=spring-boot-template&redirect_uri=https://www.google.com",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"oauth2.0",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code",
+							"description": "固定"
+						},
+						{
+							"key": "client_id",
+							"value": "spring-boot-template",
+							"description": "CAS 自定義"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com",
+							"description": "CAS 自定義"
+						},
+						{
+							"key": "status",
+							"value": "xd",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "驗證 code (需使用 browser)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/oauth2.0/accessToken?grant_type=authorization_code&client_id=spring-boot-template&client_secret=1&code=OC-3-NL7sE3pCqoooMgtF-dHxmnYQpTVko7To&redirect_uri=https://www.google.com",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"oauth2.0",
+						"accessToken"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"description": "固定"
+						},
+						{
+							"key": "client_id",
+							"value": "spring-boot-template",
+							"description": "CAS 定義"
+						},
+						{
+							"key": "client_secret",
+							"value": "1",
+							"description": "CAS 定義"
+						},
+						{
+							"key": "code",
+							"value": "OC-3-NL7sE3pCqoooMgtF-dHxmnYQpTVko7To",
+							"description": "CAS 回傳"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com",
+							"description": "呼叫端定義"
+						},
+						{
+							"key": "status",
+							"value": "CzPZDWWh30KjiSNeC-IwrWcKqK58B-_03gJ_KuSd29I%3D",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "用 token 取 user profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/oauth2.0/profile?access_token=AT-8--394Z3B1ALf60Hy7m7Q-hGxOJdKTsLdw",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"oauth2.0",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "AT-8--394Z3B1ALf60Hy7m7Q-hGxOJdKTsLdw",
+							"description": "CAS 回傳"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "請求 user profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/oauth2.0/profile?access_token=AT-1-h4u3UomJOJTkGoJAv-Q20h3QIwixrfe9",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"oauth2.0",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "AT-1-h4u3UomJOJTkGoJAv-Q20h3QIwixrfe9",
+							"description": "CAS 回傳"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "密碼模式",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-service",
+						"value": "https://www.goolge.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "spring-boot-template",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "rex",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/oauth2.0/accessToken",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"oauth2.0",
+						"accessToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登出",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/logout",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

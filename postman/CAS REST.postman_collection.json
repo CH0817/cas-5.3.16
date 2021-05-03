@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "bd23a190-45fa-41b6-aeee-140462b9be04",
+		"name": "CAS REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "請求 TGT",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "rex",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/v1/tickets",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"v1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "請求 ST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "service",
+							"value": "https://www.google.com",
+							"description": "server url",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/v1/tickets/TGT-2-zc1wt1EbAhnH1AoHr4MjkOa5epSuGbANHJlMTCEx65EjKLkbN6n3TfdXCHvff6VlyUwRex-Laptop",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"v1",
+						"tickets",
+						"TGT-2-zc1wt1EbAhnH1AoHr4MjkOa5epSuGbANHJlMTCEx65EjKLkbN6n3TfdXCHvff6VlyUwRex-Laptop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "驗證 ST",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/p3/serviceValidate?service=https://www.google.com&ticket=ST-1-ys3bmLvdvMOV7DmuGHao6qwdb2ARex-Laptop",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"p3",
+						"serviceValidate"
+					],
+					"query": [
+						{
+							"key": "service",
+							"value": "https://www.google.com"
+						},
+						{
+							"key": "ticket",
+							"value": "ST-1-ys3bmLvdvMOV7DmuGHao6qwdb2ARex-Laptop"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登出（刪除 TGT）",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cas.example.org:8443/cas/v1/tickets/TGT-5-Dvo3pxVn08LrdXXpcrD8Dk5-3Tx2f64pbHYnbXaGrcHrAFjCkemWhpVaRCM9M-zmbkARex-Laptop",
+					"protocol": "https",
+					"host": [
+						"cas",
+						"example",
+						"org"
+					],
+					"port": "8443",
+					"path": [
+						"cas",
+						"v1",
+						"tickets",
+						"TGT-5-Dvo3pxVn08LrdXXpcrD8Dk5-3Tx2f64pbHYnbXaGrcHrAFjCkemWhpVaRCM9M-zmbkARex-Laptop"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
